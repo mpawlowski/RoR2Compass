@@ -18,7 +18,7 @@ namespace CompassPlugin
             this.compassUI.transform.SetParent(this.parent);
         }
 
-        void SetPosition(Vector3 position)
+        public void SetPosition(Vector3 position)
         {
             this.compass.transform.position = position;
         }
@@ -26,6 +26,12 @@ namespace CompassPlugin
         void Update()
         {
 
+        }
+
+        private void OnDestroy()
+        {
+            Object.Destroy(this.compassUI);
+            Object.Destroy(this.compass);
         }
 
         public CompassUI() : base()

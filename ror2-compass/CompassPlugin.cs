@@ -17,7 +17,9 @@ namespace CompassPlugin
         private CompassUI ui;
         private CharacterBody currBody;
 
-        private ConfigEntry<bool> chatDebug;
+        private ConfigEntry<int> x;
+        private ConfigEntry<int> y;
+        private ConfigEntry<int> fontSize;
 
         public CompassPlugin() : base()
         {
@@ -26,15 +28,22 @@ namespace CompassPlugin
 
         void Awake()
         {
-            this.chatDebug = Config.Bind("Developer",
-                                    "ChatDebugLogging",
-                                    true,
-                                    "Whether or not to show debug logs in chat.");
 
-            if (chatDebug.Value)
-            {
-                Chat.AddMessage("Compass loaded successfully!");
-            }
+            this.x = Config.Bind("Position",
+                  "CompassPositionX",
+                        50,
+                        "X position of the compass.");
+
+            this.y = Config.Bind("Position",
+                "CompassPositionY",
+                8,
+                "Y position of the compass.");
+
+            this.fontSize = Config.Bind("Font",
+                "FontSize",
+                18,
+                "Font size of the compass text.");
+
         }
 
         float radToDeg(float rad) { return rad * (180 / (float)Math.PI); }
@@ -65,6 +74,8 @@ namespace CompassPlugin
             {
                 return;
             }
+
+
 
             var camera = Camera.main.transform.forward;
             var angle = vectorAngle(camera.x, camera.z);
@@ -109,11 +120,6 @@ namespace CompassPlugin
                 d = Direction.NORTH_EAST;
             }
 
-            if (chatDebug.Value)
-            {
-                Chat.AddMessage("Compass: " + d.ShortString() + " : " + angle);
-            }
-
             UpdateUI(d);
 
         }
@@ -124,7 +130,30 @@ namespace CompassPlugin
             {
                 return;
             }
-            ui.compassUI.SetText(d.LongString());
+
+            if (CameraRigController.readOnlyInstancesList == null || CameraRigController.readOnlyInstancesList.Count == 0)
+            {
+                return;
+            }
+
+            this.currBody = CameraRigController.readOnlyInstancesList[0].viewer.masterController.master.GetBody();
+
+            if (this.ui == null && this.currBody)
+            {
+                this.ui = this.currBody.gameObject.AddComponent<CompassUI>();
+                this.ui.transform.SetParent(this.currBody.transform);
+                this.ui.SetPosition(new Vector3((float)(Screen.width * x.Value / 100f), (float)(Screen.height * y.Value) / 100f, 0.0f));
+                var component = this.ui.compassUI.GetComponent<RectTransform>();
+                Vector2 sizeDelta = component.sizeDelta;
+
+                sizeDelta.x = 200;
+                sizeDelta.y = 200;
+
+                component.sizeDelta = sizeDelta;
+                this.ui.compassUI.fontSize = fontSize.Value;
+            }
+            this.ui.compassUI.SetText(d.LongString());
+            this.ui.compassUI.alignment = TextAlignmentOptions.Center;
         }
     }
 }
