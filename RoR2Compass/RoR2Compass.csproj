@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <RootNamespace>ror2_compass</RootNamespace>
+    <RootNamespace>RoR2Compass</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

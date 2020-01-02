@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29509.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ror2-compass", "ror2-compass\ror2-compass.csproj", "{2CFE33F6-4ADB-491F-BB94-FB0386F8EE73}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoR2Compass", "RoR2Compass\RoR2Compass.csproj", "{2CFE33F6-4ADB-491F-BB94-FB0386F8EE73}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
