@@ -4,6 +4,10 @@ In game compass for Risk of Rain 2. Supports config using `Bepinex Configuration
 
 ## Changelog
 
+### 0.0.3
+
+- Open Source
+
 ### 0.0.2
 
 - Fix direction calculation by using correct axes.

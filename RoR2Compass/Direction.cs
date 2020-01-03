@@ -26,7 +26,8 @@ namespace CompassPlugin
     static class DirectionCalculator
     {
 
-        private static float radiansToDegrees(float radians) {
+        private static float radiansToDegrees(float radians)
+        {
             return radians * (180 / (float)Math.PI);
         }
 
