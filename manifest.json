@@ -1,0 +1,9 @@
+{
+    "name": "Compass",
+    "version_number": "0.0.1",
+    "website_url": "",
+    "description": "Adds a customizable compass to the game.",
+    "dependencies": [
+        "bbepis-BepInExPack-3.0.0"
+    ]
+}
