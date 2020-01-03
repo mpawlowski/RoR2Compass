@@ -1,7 +1,7 @@
 {
     "name": "Compass",
-    "version_number": "0.0.1",
-    "website_url": "",
+    "version_number": "0.0.3",
+    "website_url": "https://github.com/mpawlowski/RoR2Compass",
     "description": "Adds a customizable compass to the game.",
     "dependencies": [
         "bbepis-BepInExPack-3.0.0"

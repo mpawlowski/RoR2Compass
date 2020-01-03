@@ -7,7 +7,7 @@ using TMPro;
 
 namespace CompassPlugin
 {
-    [BepInPlugin("io.atflac.ror2.compassplugin", "Compass", "0.0.1")]
+    [BepInPlugin("io.atflac.ror2.compassplugin", "Compass", "0.0.3")]
     public class CompassPlugin : BaseUnityPlugin
     {
         public const string Guid = "io.atflac.ror2.compassplugin";
@@ -72,7 +72,7 @@ namespace CompassPlugin
             }
 
             var camera = Camera.main.transform.forward;
-            var angle = DirectionCalculator.ComputeDegrees(new Vector2(camera.x, camera.y));
+            var angle = DirectionCalculator.ComputeDegrees(new Vector2(camera.x, camera.z));
             var d = DirectionCalculator.FromDegrees(angle);
             switch (directionMode.Value)
             {
